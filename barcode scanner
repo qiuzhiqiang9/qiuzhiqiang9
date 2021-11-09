@@ -1,0 +1,32 @@
+"""
+Funtion: flash led
+input  : LED PIN choice and delay time input
+version:01
+Author: qiuzhiqiang
+date: 2021103
+"""
+from machine import Pin #导入Pin模块
+import time
+#led=Pin(2,Pin.OUT) #构建led对象，GPIO2,输出
+class flash_led:
+    ftime=100;
+    fledpin=0;
+    def flash(self,ledpin,delay):
+        self.ftime=delay
+        self.fledpin=ledpin
+    #def printflash(self):
+        led=Pin(self.fledpin,Pin.OUT) #构建led对象，GPIO2,输出
+        led.value(1)
+        print('high_ftime:%d'%self.ftime)
+        time.sleep_ms(self.ftime)
+        led.value(0)
+        print('low_ftime:%d'%self.ftime)
+        time.sleep_ms(self.ftime)
+if __name__=='__main__':
+    led1=flash_led() #构建一个LED flash 实例
+    led2=flash_led() #构建一个LED flash 实例
+    led1.flash(3,100)
+    #led1.printflash()
+    led2.flash(3,1000)   
+    #led2.printflash()
+                
